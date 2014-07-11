@@ -45,7 +45,7 @@ function populatePosition(text, entry) {
     while ((match = matcher.exec(text)) !== null) {
         entry.positions.push({
             from:   match.index + match[0].indexOf(entry.word),
-            to:     match.index + wordLength,
+            to:     match.index + wordLength + 1,
             length: wordLength
         });
     }

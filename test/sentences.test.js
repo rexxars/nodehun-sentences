@@ -64,6 +64,16 @@ function runTests(err, aff, dic) {
             t.end();
         });
     });
+
+    test('from and to offset for typos are correct', function(t) {
+        checker(instance, text, function(err, typos) {
+            var typo = findTypo('contani', typos);
+            var pos = (typo.positions || [])[0] || {};
+
+            t.equal(text.substring(pos.from, pos.to), 'contani', 'substring should equal the typo');
+            t.end();
+        });
+    });
 }
 
 function readDictionary(cb) {
