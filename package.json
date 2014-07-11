@@ -1,0 +1,36 @@
+{
+  "name": "nodehun-sentences",
+  "version": "0.1.0",
+  "description": "Checks whole sentences / chunks of text for errors and returns positions and suggestions for each",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rexxars/nodehun-sentences.git"
+  },
+  "keywords": [
+    "spelling",
+    "hunspell",
+    "nodehun",
+    "spell",
+    "spellcheck"
+  ],
+  "author": "Espen Hovlandsdal <espen@hovlandsdal.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rexxars/nodehun-sentences/issues"
+  },
+  "homepage": "https://github.com/rexxars/nodehun-sentences",
+  "dependencies": {
+    "async": "^0.9.0",
+    "nodehun": "^0.2.3",
+    "partial": "0.0.3",
+    "unique-words": "0.0.2"
+  },
+  "devDependencies": {
+    "concat-stream": "^1.4.6",
+    "tape": "^2.13.3"
+  }
+}
