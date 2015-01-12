@@ -1,3 +1,5 @@
+'use strict';
+
 var test = require('tape');
 var checker = require('../');
 var nodehun = require('nodehun');
@@ -19,6 +21,21 @@ function runTests(err, aff, dic) {
     test('errors when not passed a nodehun instance', function(t) {
         checker(true, text, function(err) {
             t.ok(err.message.indexOf('instance of nodehun') >= 0, 'should get error');
+            t.end();
+        });
+    });
+
+    test('passed on errors from nodehun', function(t) {
+        var fakeInstance = {
+            spellSuggestions: function(word, cb) {
+                process.nextTick(function() {
+                    cb(new Error('Some error'));
+                });
+            }
+        };
+
+        checker(fakeInstance, 'word', function(err) {
+            t.ok(err instanceof Error, 'should pass on errors from nodehun');
             t.end();
         });
     });

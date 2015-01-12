@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var spellcheck = require('../');
 var nodehun = require('nodehun');
@@ -11,6 +13,7 @@ var text = 'This is some text we want to ceck for typos';
 spellcheck(hunspell, text, function(err, typos) {
     console.log(typos);
 
+    /* jshint -W030, eqeqeq: false */
     typos == [{
         word: 'ceck',
         suggestions: [
