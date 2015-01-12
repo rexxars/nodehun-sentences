@@ -13,7 +13,7 @@ Run `npm install --save nodehun-sentences` to include it in your project.
 ```js
 var spellcheck = require('nodehun-sentences');
 spellcheck(nodehunInstance, textToCheck, function(err, typos) {
-    // NOTE: `err` does NOT contain whether typos was found - 
+    // NOTE: `err` does NOT contain whether typos was found -
     // it returns any actual *errors* (not being passed a
     // valid instance of nodehun, for instance)
     if (err) {

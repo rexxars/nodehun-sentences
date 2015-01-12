@@ -1,13 +1,12 @@
 var partial  = require('partial');
-var hunspell = require('nodehun');
 var unique   = require('unique-words');
 var async    = require('async');
 
 module.exports = checkChunk;
 
 function checkChunk(nodehun, chunk, callback) {
-    if (!(nodehun instanceof hunspell)) {
-        return callback(new Error(
+    if (!nodehun || typeof nodehun.spellSuggestions !== 'function') {
+        return callback(new TypeError(
             'First argument to nodehun-sentences must be an instance of nodehun'
         ));
     }
@@ -32,7 +31,7 @@ function checkChunk(nodehun, chunk, callback) {
 }
 
 function populatePositions(text, words) {
-    return words.filter(assertTrue).map(function(entry) {
+    return words.filter(Boolean).map(function(entry) {
         return populatePosition(text, entry);
     });
 }
@@ -54,12 +53,12 @@ function populatePosition(text, entry) {
 }
 
 function checkWord(nodehun, word, callback) {
-    nodehun.spellSuggestions(word, function(validWord, suggestions) {
-        if (validWord) {
+    nodehun.spellSuggestions(word, function(err, correct, suggestions) {
+        if (correct) {
             return callback();
         }
 
-        callback(undefined, {
+        callback(err, {
             word: word,
             suggestions: suggestions
         });
@@ -72,10 +71,6 @@ function trimWord(word) {
 
 function splitWord(word) {
     return word.replace(/\//g, ' ');
-}
-
-function assertTrue(i) {
-    return i;
 }
 
 function escapeRegExp(str) {

@@ -16,6 +16,13 @@ readDictionary(runTests);
 function runTests(err, aff, dic) {
     var instance = new nodehun(aff, dic);
 
+    test('errors when not passed a nodehun instance', function(t) {
+        checker(true, text, function(err) {
+            t.ok(err.message.indexOf('instance of nodehun') >= 0, 'should get error');
+            t.end();
+        });
+    });
+
     test('finds correct number of errors', function(t) {
         checker(instance, text, function(err, typos) {
             t.equal(typos.length, 2, 'should find 2 typos');
