@@ -1,5 +1,7 @@
 # nodehun-sentences
 
+[![Version npm](http://img.shields.io/npm/v/nodehun-sentences.svg?style=flat-square)](http://browsenpm.org/package/nodehun-sentences)[![Build Status](http://img.shields.io/travis/rexxars/nodehun-sentences/master.svg?style=flat-square)](https://travis-ci.org/rexxars/nodehun-sentences)[![Dependencies](https://img.shields.io/david/rexxars/nodehun-sentences.svg?style=flat-square)](https://david-dm.org/rexxars/nodehun-sentences)[![Coverage Status](http://img.shields.io/coveralls/rexxars/nodehun-sentences/master.svg?style=flat-square)](https://coveralls.io/r/rexxars/nodehun-sentences?branch=master)[![Code Climate](http://img.shields.io/codeclimate/github/rexxars/nodehun-sentences.svg?style=flat-square)](https://codeclimate.com/github/rexxars/nodehun-sentences/)
+
 [nodehun](https://github.com/nathanjsweet/nodehun) is a great library for interacting with [hunspell](http://hunspell.sourceforge.net/) from node.js. It's fairly low-level, however, letting you check one word at a time. `nodehun-sentences` lets you easily check whole sentences or chunks of text for errors.
 
 It asynchronously checks all the words and returns with a result array containing all the encountered typos. For each typo, you will also get an array of all the positions within the string where the typo was encountered, so you can easily visualize all errors.
