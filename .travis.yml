@@ -10,3 +10,6 @@ after_script:
 env:
   global:
     - secure: "THRPoOyebWEnO6h1jyIV5tvM9j4vpLpakt3hCBIBDtdSOTXdgKMTwdV4WcFq0WdLIPvzxtGO2NgI/sCdKBueNDbAz38Z1WXj8xXy92rhtcbtLYRaUkaY86M39x2025v8HT5chER5cIqLByecfLYl7c2Hv+Yqd9QbuQaCQBpRdQ8="
+matrix:
+  allow_failures:
+    - node_js: '0.11'
