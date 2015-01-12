@@ -8,7 +8,9 @@ It asynchronously checks all the words and returns with a result array containin
 
 # Installation
 
-Run `npm install --save nodehun-sentences` to include it in your project.
+```bash
+$ npm install --save nodehun-sentences
+```
 
 # Usage
 
