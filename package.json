@@ -4,7 +4,12 @@
   "description": "Checks whole sentences / chunks of text for errors and returns positions and suggestions for each",
   "main": "index.js",
   "scripts": {
-    "test": "node test/*.test.js"
+    "coverage": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
+    "lint": "jshint .",
+    "pretest": "npm run lint",
+    "test": "tape test/*.test.js",
+    "test-travis": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
+    "prepublish": "npm test && npm prune"
   },
   "repository": {
     "type": "git",
@@ -29,8 +34,10 @@
     "unique-words": "^1.0.0"
   },
   "devDependencies": {
-    "nodehun": "^1.0.2",
     "concat-stream": "^1.4.7",
+    "istanbul": "^0.3.5",
+    "jshint": "^2.5.11",
+    "nodehun": "^1.0.2",
     "tape": "^3.0.3"
   }
 }
