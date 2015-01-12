@@ -1,3 +1,5 @@
+'use strict';
+
 var partial  = require('partial');
 var unique   = require('unique-words');
 var async    = require('async');
@@ -54,11 +56,11 @@ function populatePosition(text, entry) {
 
 function checkWord(nodehun, word, callback) {
     nodehun.spellSuggestions(word, function(err, correct, suggestions) {
-        if (correct) {
-            return callback();
+        if (err || correct) {
+            return callback(err);
         }
 
-        callback(err, {
+        callback(undefined, {
             word: word,
             suggestions: suggestions
         });
@@ -74,5 +76,5 @@ function splitWord(word) {
 }
 
 function escapeRegExp(str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
