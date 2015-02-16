@@ -99,6 +99,21 @@ function runTests(err, aff, dic) {
             t.end();
         });
     });
+
+    test('detects uncommon abbreviations/typos', function(t) {
+        var abbrText = 'Some abbreviations, such as e.g.c is not known to the dictionary';
+        checker(instance, abbrText, function(err, typos) {
+            var typo = findTypo('e.g.c', typos);
+            var pos = (typo.positions || [])[0] || {};
+
+            t.equal(
+                abbrText.substring(pos.from, pos.to),
+                'e.g.c',
+                'substring should equal the typo abbreviation'
+            );
+            t.end();
+        });
+    });
 }
 
 function readDictionary(cb) {
@@ -122,7 +137,7 @@ function readDictionary(cb) {
 }
 
 // Typos are not guaranteed to be in the order they were found
-// Simply lookup function to find the one we are looking for
+// This is a simple lookup function to find the one we are looking for
 function findTypo(word, typos) {
     for (var key in typos) {
         if (typos[key].word === word) {
