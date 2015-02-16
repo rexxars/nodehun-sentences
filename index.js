@@ -68,7 +68,7 @@ function checkWord(nodehun, word, callback) {
 }
 
 function trimWord(word) {
-    var matches = word.match(/^\W*((\w+)|([a-z]\.){2,})\W*$/i);
+    var matches = word.match(/^\W*(([a-z]\.){2,}|\w+|(\w.+\w))\W*$/i);
     word = (matches && matches[1]) || '';
 
     return word.replace(/^\d+$/, '');
