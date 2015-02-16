@@ -3,14 +3,14 @@
 var test = require('tape');
 var checker = require('../');
 var nodehun = require('nodehun');
-var zlib = require('zlib');
 var fs = require('fs');
 var concat = require('concat-stream');
 
 // Text to match against
 var text = 'This chunk of text should contani exactly two distinct errors. \n';
     text += 'It contains the same words more than once; for exemple, \n';
-    text += 'the word "exemple" is referenced twice.';
+    text += 'the word "exemple" is referenced twice. It should also work with popular abbreviations, ';
+    text += 'such as "e.g." and "i.e.".';
 
 // Read dictionaries and run the tests when complete
 readDictionary(runTests);
@@ -104,16 +104,14 @@ function readDictionary(cb) {
     var aff, dic, remaining = 2;
 
     fs
-        .createReadStream(__dirname + '/dictionaries/en_US.aff.gz')
-        .pipe(zlib.createGunzip())
+        .createReadStream(__dirname + '/dictionaries/en_GB.aff')
         .pipe(concat(function(data) {
             aff = data;
             if (--remaining === 0) { cb(null, aff, dic); }
         }));
 
     fs
-        .createReadStream(__dirname + '/dictionaries/en_US.dic.gz')
-        .pipe(zlib.createGunzip())
+        .createReadStream(__dirname + '/dictionaries/en_GB.dic')
         .pipe(concat(function(data) {
             dic = data;
             if (--remaining === 0) { cb(null, aff, dic); }
