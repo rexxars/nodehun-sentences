@@ -3,6 +3,7 @@
 var test = require('tape');
 var checker = require('../');
 var nodehun = require('nodehun');
+var zlib = require('zlib');
 var fs = require('fs');
 var concat = require('concat-stream');
 
@@ -104,14 +105,16 @@ function readDictionary(cb) {
     var aff, dic, remaining = 2;
 
     fs
-        .createReadStream(__dirname + '/dictionaries/en_GB.aff')
+        .createReadStream(__dirname + '/dictionaries/en_GB.aff.gz')
+        .pipe(zlib.createGunzip())
         .pipe(concat(function(data) {
             aff = data;
             if (--remaining === 0) { cb(null, aff, dic); }
         }));
 
     fs
-        .createReadStream(__dirname + '/dictionaries/en_GB.dic')
+        .createReadStream(__dirname + '/dictionaries/en_GB.dic.gz')
+        .pipe(zlib.createGunzip())
         .pipe(concat(function(data) {
             dic = data;
             if (--remaining === 0) { cb(null, aff, dic); }
