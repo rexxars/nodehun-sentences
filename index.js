@@ -40,13 +40,15 @@ function populatePositions(text, words) {
 
 function populatePosition(text, entry) {
     var matcher = new RegExp('(?:\\W|^)' + escapeRegExp(entry.word) + '(?:\\W|$)', 'g');
-    var match, wordLength = entry.word.length;
+    var adjustment, match, wordLength = entry.word.length;
 
     entry.positions = [];
     while ((match = matcher.exec(text)) !== null) {
+        adjustment = (match.index == 0 ? 0 : 1);
+
         entry.positions.push({
             from:   match.index + match[0].indexOf(entry.word),
-            to:     match.index + wordLength + 1,
+            to:     match.index + wordLength + adjustment,
             length: wordLength
         });
     }
