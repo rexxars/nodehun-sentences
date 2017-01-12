@@ -100,6 +100,17 @@ function runTests(err, aff, dic) {
         });
     });
 
+    test('errors at first word have correct offsets', function(t) {
+        var testText = 'cwos have four';
+        checker(instance, testText, function(err, typos) {
+            var typo = findTypo('cwos', typos);
+            var pos = (typo.positions || [])[0] || {};
+
+            t.equal(testText.substring(pos.from, pos.to), 'cwos', 'substring should equal the typo');
+            t.end();
+        });
+    });
+
     test('detects uncommon abbreviations/typos', function(t) {
         var abbrText = 'Some abbreviations, such as e.g.c is not known to the dictionary';
         checker(instance, abbrText, function(err, typos) {

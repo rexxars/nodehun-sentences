@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
     "lint": "jshint .",
-    "pretest": "npm run lint",
+    "posttest": "npm run lint",
     "test": "tape test/*.test.js",
     "test-travis": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
     "prepublish": "in-publish && npm test && npm prune || not-in-publish"
