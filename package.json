@@ -9,7 +9,7 @@
     "pretest": "npm run lint",
     "test": "tape test/*.test.js",
     "test-travis": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
-    "prepublish": "npm test && npm prune"
+    "prepublish": "in-publish && npm test && npm prune || not-in-publish"
   },
   "repository": {
     "type": "git",
@@ -29,15 +29,16 @@
   },
   "homepage": "https://github.com/rexxars/nodehun-sentences",
   "dependencies": {
-    "async": "^0.9.0",
-    "partial": "0.0.3",
+    "async": "^2.1.4",
+    "in-publish": "^2.0.0",
+    "partial": "^0.0.3",
     "unique-words": "^1.0.0"
   },
   "devDependencies": {
     "concat-stream": "^1.4.7",
-    "istanbul": "^0.3.5",
+    "istanbul": "^0.4.5",
     "jshint": "^2.5.11",
-    "nodehun": "^1.0.2",
-    "tape": "^3.0.3"
+    "nodehun": "^2.0.1",
+    "tape": "^4.6.3"
   }
 }

@@ -2,7 +2,7 @@
 
 var test = require('tape');
 var checker = require('../');
-var nodehun = require('nodehun');
+var Nodehun = require('nodehun');
 var zlib = require('zlib');
 var fs = require('fs');
 var concat = require('concat-stream');
@@ -17,7 +17,7 @@ var text = 'This chunk of text should contani exactly two distinct errors. \n';
 readDictionary(runTests);
 
 function runTests(err, aff, dic) {
-    var instance = new nodehun(aff, dic);
+    var instance = new Nodehun(aff, dic);
 
     test('errors when not passed a nodehun instance', function(t) {
         checker(true, text, function(err) {

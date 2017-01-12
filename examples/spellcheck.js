@@ -2,8 +2,8 @@
 
 var fs = require('fs');
 var spellcheck = require('../');
-var nodehun = require('nodehun');
-var hunspell = new nodehun(
+var Nodehun = require('nodehun');
+var hunspell = new Nodehun(
     fs.readFileSync(__dirname + '/../node_modules/nodehun/examples/dictionaries/en_US/en_US.aff'),
     fs.readFileSync(__dirname + '/../node_modules/nodehun/examples/dictionaries/en_US/en_US.dic')
 );
