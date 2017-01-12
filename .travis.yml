@@ -9,6 +9,16 @@ script:
 after_script:
   - npm install coveralls@2.11.x && cat coverage/lcov.info | coveralls
   - npm install codeclimate-test-reporter && cat coverage/lcov.info | codeclimate
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      - g++-4.8-multilib
+      - gcc-multilib
 env:
   global:
     - secure: "THRPoOyebWEnO6h1jyIV5tvM9j4vpLpakt3hCBIBDtdSOTXdgKMTwdV4WcFq0WdLIPvzxtGO2NgI/sCdKBueNDbAz38Z1WXj8xXy92rhtcbtLYRaUkaY86M39x2025v8HT5chER5cIqLByecfLYl7c2Hv+Yqd9QbuQaCQBpRdQ8="
+  matrix:
+    - CXX=g++-4.8

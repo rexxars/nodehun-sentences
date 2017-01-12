@@ -424,7 +424,7 @@ mkdirp@0.5.x:
   dependencies:
     minimist "0.0.8"
 
-nodehun@^2.0.1:
+nodehun@^2.0.11:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/nodehun/-/nodehun-2.0.11.tgz#cbba5595720f325fb247fb0e7e2018a56f7ed188"
 
