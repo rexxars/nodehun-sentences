@@ -70,7 +70,7 @@ function checkWord(nodehun, word, callback) {
 }
 
 function trimWord(word) {
-    var matches = word.match(/^[^\wÀ-ÿ]*([\wÀ-ÿ]+)*[^\wÀ-ÿ]*$/i);
+    var matches = word.match(/^[^\wÀ-ÿ]*([\wÀ-ÿ.]+)*[^\wÀ-ÿ]*$/i);
     word = (matches && matches[1]) || '';
 
     return word.replace(/^\d+$/, '');
