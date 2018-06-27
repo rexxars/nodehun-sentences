@@ -1,6 +1,6 @@
 {
   "name": "nodehun-sentences",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Checks whole sentences / chunks of text for errors and returns positions and suggestions for each",
   "main": "index.js",
   "scripts": {
