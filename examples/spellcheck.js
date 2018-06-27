@@ -1,11 +1,22 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 var spellcheck = require('../');
 var Nodehun = require('nodehun');
+
+var dictionaryPath = path.join(
+    __dirname,
+    '..',
+    'node_modules',
+    'nodehun',
+    'examples',
+    'dictionaries'
+);
+
 var hunspell = new Nodehun(
-    fs.readFileSync(__dirname + '/../node_modules/nodehun/examples/dictionaries/en_US/en_US.aff'),
-    fs.readFileSync(__dirname + '/../node_modules/nodehun/examples/dictionaries/en_US/en_US.dic')
+    fs.readFileSync(path.join(dictionaryPath, 'en_US.aff')),
+    fs.readFileSync(path.join(dictionaryPath, 'en_US.dic'))
 );
 
 var text = 'This is some text we want to ceck for typos';

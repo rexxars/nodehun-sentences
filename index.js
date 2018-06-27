@@ -1,6 +1,5 @@
 'use strict';
 
-var partial  = require('partial');
 var unique   = require('unique-words');
 var async    = require('async');
 
@@ -22,7 +21,7 @@ function checkChunk(nodehun, chunk, callback) {
         return i && i.length > 1;
     });
 
-    var wordCheck = partial(checkWord)(nodehun);
+    var wordCheck = checkWord.bind(null, nodehun);
     async.map(words, wordCheck, function(err, results) {
         if (err) {
             return callback(err);
