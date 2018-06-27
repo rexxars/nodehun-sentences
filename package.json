@@ -1,6 +1,6 @@
 {
   "name": "nodehun-sentences",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Checks whole sentences / chunks of text for errors and returns positions and suggestions for each",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "lint": "jshint .",
     "posttest": "npm run lint",
     "test": "tape test/*.test.js",
-    "test-travis": "istanbul cover node_modules/.bin/tape -- test/*.test.js",
     "prepublishOnly": "npm test && npm run lint"
   },
   "repository": {

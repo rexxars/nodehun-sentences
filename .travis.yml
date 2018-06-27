@@ -7,10 +7,7 @@ node_js:
   - '0.12'
   - '0.10'
 script:
-  - npm run test-travis
-after_script:
-  - npm install coveralls@2.11.x && cat coverage/lcov.info | coveralls
-  - npm install codeclimate-test-reporter && cat coverage/lcov.info | codeclimate
+  - npm run coverage
 addons:
   apt:
     sources:
