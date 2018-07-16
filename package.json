@@ -29,7 +29,8 @@
   "homepage": "https://github.com/rexxars/nodehun-sentences",
   "dependencies": {
     "async": "^2.6.1",
-    "unique-words": "^1.0.0"
+    "unique-words": "^1.0.0",
+    "xregexp": "^4.2.0"
   },
   "devDependencies": {
     "concat-stream": "^1.6.2",
