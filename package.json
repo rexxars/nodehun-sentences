@@ -21,6 +21,9 @@
     "spell",
     "spellcheck"
   ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "author": "Espen Hovlandsdal <espen@hovlandsdal.com>",
   "license": "MIT",
   "bugs": {
