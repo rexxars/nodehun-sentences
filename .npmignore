@@ -4,3 +4,4 @@ test
 .jshintignore
 .editorconfig
 .gitignore
+*.log
