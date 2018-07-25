@@ -1,7 +1,8 @@
 'use strict';
 
-var unique   = require('unique-words');
-var async    = require('async');
+var unique  = require('unique-words');
+var async   = require('async');
+var xRegExp = require('xregexp');
 
 module.exports = checkChunk;
 
@@ -69,9 +70,11 @@ function checkWord(nodehun, word, callback) {
 }
 
 function trimWord(word) {
-    var matches = word.match(/^[^\wÀ-ÿ]*([\wÀ-ÿ.]+)*[^\wÀ-ÿ]*$/i);
-    word = (matches && matches[1]) || '';
-
+    var LTrim = xRegExp('^\\P{Letter}*', 'ig');
+    var lettersOnly = xRegExp('^(\\p{Letter}+[.]*)*', 'ig');
+    word = xRegExp.replace(word, LTrim, '');
+    word = xRegExp.match(word, lettersOnly, 'one');
+    word = word ? word : '';
     return word.replace(/^\d+$/, '');
 }
 

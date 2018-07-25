@@ -125,6 +125,28 @@ function runTests(err, aff, dic) {
             t.end();
         });
     });
+
+    test('handles unicode', function(t) {
+        var testText = 'much ľĺťěž confusion';
+        checker(instance, testText, function(err, typos) {
+            var typo = findTypo('ľĺťěž', typos);
+            var pos = (typo.positions || [])[0] || {};
+
+            t.equal(testText.substring(pos.from, pos.to), 'ľĺťěž', 'substring should equal the typo');
+            t.end();
+        });
+    });
+
+    test('handles unicode (#2)', function(t) {
+        var testText = 'Blueberry jam? "Blåbærsyltetøy".';
+        checker(instance, testText, function(err, typos) {
+            var typo = findTypo('Blåbærsyltetøy', typos);
+            var pos = (typo.positions || [])[0] || {};
+
+            t.equal(testText.substring(pos.from, pos.to), 'Blåbærsyltetøy', 'substring should equal the typo');
+            t.end();
+        });
+    });
 }
 
 function readDictionary(cb) {
